@@ -2,6 +2,8 @@ import Link from 'next/link'
 import Image from "next/image";
 import {  SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import { Button } from '../ui/button';
+import NavItem from './NavItem';
+import MobileNav from './MobileNav';
 function Header() {
   return (
     <header className='w-full border-b'>
@@ -12,9 +14,16 @@ function Header() {
                 alt='logo'
                 />
             </Link>
+            <SignedIn>
+              <nav className="md:flex-between hidden w-full max-w-xs">
+                <NavItem />
+              </nav>
+            </SignedIn>
             <div className='flex w-32 justify-end gap-3 ml-auto'>
+ 
               <SignedIn>
                 <UserButton afterSignOutUrl='/'/>
+                <MobileNav/>
               </SignedIn>
               <SignedOut >
                 <Button asChild className='rounded-full' size={"lg"}>
