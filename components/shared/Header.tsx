@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from "next/image";
 import {  SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
-import { Button } from '../ui/button';
+//import { Button } from '../ui/button';
 import NavItem from './NavItem';
 import MobileNav from './MobileNav';
 function Header() {
@@ -26,9 +26,9 @@ function Header() {
                 <MobileNav/>
               </SignedIn>
               <SignedOut >
-                <Button asChild className='rounded-full' size={"lg"}>
+                <button className='rounded-full' >
                   <Link href={"/sign-in"}>Login</Link>
-                </Button>
+                </button>
               </SignedOut>
             </div>
         </div>

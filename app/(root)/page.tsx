@@ -1,6 +1,7 @@
-import { Button } from "@/components/ui/button";
+//import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import ContentCard from "@/components/shared/ContentCard";
 export default function Home() {
   return (
     <>
@@ -13,12 +14,12 @@ export default function Home() {
           Host, Connect, Celebrate: Your Events, Our Platform!
           </h1>
           <p className="p-regular-20 md:p-regular-24">Book and learn helpful tips from 3,168+ mentors in world-class companies with our global community.</p>
-          <Button size={'lg'}  className="button w-full
+          <button  className="button w-full
           sm:w-fit" >
           <Link href="#event">
           Explore now
           </Link>
-          </Button>
+          </button>
         </div>
 
         <Image
@@ -38,6 +39,7 @@ export default function Home() {
         Search
         CategoryFilter
       </div>
+      <ContentCard/>
     </section>
     </>
   )
