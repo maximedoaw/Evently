@@ -3,6 +3,7 @@ import Image from "next/image";
 function Card() {
   return (
 <div className="w-60 h-80 bg-white p-3 flex flex-col gap-1 rounded-lg border">
+ 
   <Image
   src={"/assets/images/hero.png"}
   alt='card media'
