@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from "next/image";
 import {  SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Button from '@mui/material/Button';
-//import { Button } from '../ui/button';
 import NavItem from './NavItem';
 import MobileNav from './MobileNav';
 function Header() {
