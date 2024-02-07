@@ -1,12 +1,13 @@
-import React from 'react'
-import Card from './Card'
+"use client"
+import React, { useEffect } from 'react';
+import Card from './Card';
 
 function ContentCard() {
   return (
     <div>
-      <Card/>
+        <Card/>
     </div>
-  )
+  );
 }
 
-export default ContentCard
+export default ContentCard;

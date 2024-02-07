@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from "next/image";
 import {  SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import Button from '@mui/material/Button';
 //import { Button } from '../ui/button';
 import NavItem from './NavItem';
 import MobileNav from './MobileNav';
@@ -20,14 +21,17 @@ function Header() {
               </nav>
             </SignedIn>
             <div className='flex w-32 justify-end gap-3 ml-auto'>
- 
+
               <SignedIn>
                 <UserButton afterSignOutUrl='/'/>
                 <MobileNav/>
               </SignedIn>
               <SignedOut >
                 <button className='rounded-full' >
-                  <Link href={"/sign-in"}>Login</Link>
+                  <Link href={"/sign-in"}>
+                    <Button variant="contained" >Login</Button>
+
+                  </Link>
                 </button>
               </SignedOut>
             </div>
