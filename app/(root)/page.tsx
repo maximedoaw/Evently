@@ -4,6 +4,10 @@ import Image from "next/image";
 import ContentCard from "@/components/shared/ContentCard";
 import { FaSearch } from "react-icons/fa";
 import { SignedIn } from "@clerk/nextjs";
+import Card from "@/components/shared/Card";
+import Category from "../../components/shared/Category";
+//import DotsMobileStepper from "../../components/shared/DotsMobileStepper";
+
 export default function Home() {
   return (
     <div >
@@ -16,10 +20,14 @@ export default function Home() {
             placeholder:text-white"/>
             <FaSearch className="text-white"/>
           </div>
-    
+
       </section>
+
+      <Category/>
+
       <section className="w-full-screen">
-          <ContentCard />
+          <Card />
+          {/*<DotsMobileStepper />*/}
       </section>
     </SignedIn>
     </div>

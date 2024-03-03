@@ -1,26 +1,51 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import Image from "next/image";
 import { FaCalendarAlt, FaMapMarkerAlt, FaMoneyBillAlt } from 'react-icons/fa';
-
-function Card() {
+import { get_event } from '@/app/helper/action';
+import Link from 'next/link'
+async function Card() {
   return (
-  <div className="card-shadow w-60 h-60 rounded-lg border
-  mt-10 cursor-pointer font-semibold  text-center hover:shadow-2xl
-  hover:transition-shadow">
-    <Image 
-    src="/AnimePicture/Avion.jpg" 
-    alt="Image d'avion" 
-    width={250}
-    height={250}
-    placeholder='blur'
-    blurDataURL='/assets/images/spinner.svg'
-    className='mx-auto'
-    />
-    <h2> Avion</h2>
-    <p className='flex'><FaCalendarAlt className='text-amber-400'/> 10-13 December 2021</p>
-    <p className='flex'><FaMapMarkerAlt className='text-amber-400'/> New york |    <FaMoneyBillAlt className='text-amber-400'/> 1000$</p>
-  </div>
+    <div  className='grid lg:grid-cols-3 grid-gap-1 sm:grid-cols-2 xl:grid-cols-4'>
+          {
+            (await get_event()).map((event,idx ) : ReactNode =>{
+              return (
+                <div className="flex items-center py-20  lg:h-screen ">
+                
+                    <div className="max-w-5xl px-4 mx-auto ">
+                      <div className="grid grid-cols-1 gap-4 lg:gap-8 sm:gap-4 sm:grid-cols-2 lg:grid-cols-2">
+                        <div className="w-full">
+                          <div className="p-6 bg-white rounded shadow dark:bg-gray-700 group w-80 hover:shadow-xl transition-duration-300">
+                            <Link className="block mb-2" href={`about/${idx}`}>
+                              <div className="relative overflow-hidden">
+                                <div className="mb-5 overflow-hidden">
+                                  <img className="object-cover w-full mx-auto transition-all rounded h-72 
+                                  group-hover:scale-110" src={event[0]} alt=""/>
+                                </div>
+                                <div className="absolute flex flex-col top-4 right-4">
+                                  <div className="flex items-center">
+                                      </div>
+
+      
+                                      </div>
+                                  </div>
+                              <h3 className="mb-2 text-xl font-bold dark:text-white"> Quality Headphones </h3>
+                              <p className="text-lg font-bold text-blue-500 dark:text-blue-300 ">
+                                <span>$29.89</span>
+                                <span className="text-xs font-semibold text-gray-400 line-through ">$33.69</span>
+                              </p>
+                            </Link>
+                          </div>
+                        </div>
+                    
+                      </div>
+                    </div>
+                  </div>
+              )
+            })
+          }
+      </div>
+ 
   )
 }
 
-export default Card
+export default Card;

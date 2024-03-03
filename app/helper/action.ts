@@ -14,10 +14,7 @@ export default interface Event{
     ImageUpload : any
 }
 const listEvent : any[] = []
-// export default interface ListEvt {
-//   image : string,
-//   events : Event 
-// }
+
 
 export const add_event = async(event : Event)  =>{
         try {
@@ -66,5 +63,7 @@ export const get_event = async()  =>{
     listEvent[count].push(data)
     count++
   })
+  console.log(listEvent);
+  
   return listEvent
 }

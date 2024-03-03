@@ -12,7 +12,6 @@ export default function RootLayout({
       <div className="flex h-screen flex-col overflow-x-scroll">
         <Header/>
         <main className="flex-1">{children}</main>
-        <SignedIn><Category/></SignedIn>
         <Footer/>
       </div>
     )

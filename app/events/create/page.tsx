@@ -34,7 +34,6 @@ function page() {
       <div className="flex flex-col items-center justify-center h-screen dark">
         <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6">
             <h2 className="text-2xl font-bold text-gray-200 mb-4">Create event</h2>
-        <button onClick={() => get_event()}> click me</button>
         <form className="flex flex-wrap " onSubmit={(event) => event.preventDefault()}>
             <input
                 type="text"
@@ -79,7 +78,10 @@ function page() {
 
             ></textarea>
             
-            <select onChange={(e) => SetCategory(() => e.target.value)}>
+            <select onChange={(e) => {SetCategory(() => e.target.value)
+              console.log(e.target.value) 
+              }
+              }>
               {
                 categories.map((category) => <option className = "bg-grey-700 text-gray-200">{category}</option>)
               }
