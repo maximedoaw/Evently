@@ -51,19 +51,10 @@ export const get_event = async()  =>{
   let  imagesList = await listAll(imageRef)
   let  imagesURL = imagesList.items.map((item) => {
     getDownloadURL(item).then((url) => {
-      listEvent.push([url])
+      listEvent.push(url)
     })
   })
   
-  
-  // get collection from the firestore of firebase
-  const querySnapshot = await getDocs(collection(db,"event"))
-  querySnapshot.forEach((doc)  =>{
-    let data = JSON.stringify(doc.data())
-    listEvent[count].push(data)
-    count++
-  })
-  console.log(listEvent);
   
   return listEvent
 }

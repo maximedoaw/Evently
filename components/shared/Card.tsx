@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FaCalendarAlt, FaMapMarkerAlt, FaMoneyBillAlt } from 'react-icons/fa';
 import { get_event } from '@/app/helper/action';
 import Link from 'next/link'
+import { fakeDataArray } from '../../app/helper/helper';
 async function Card() {
   return (
     <div  className='grid lg:grid-cols-3 grid-gap-1 sm:grid-cols-2 xl:grid-cols-4'>
@@ -19,20 +20,18 @@ async function Card() {
                               <div className="relative overflow-hidden">
                                 <div className="mb-5 overflow-hidden">
                                   <img className="object-cover w-full mx-auto transition-all rounded h-72 
-                                  group-hover:scale-110" src={event[0]} alt=""/>
+                                  group-hover:scale-110" src={event} alt=""/>
                                 </div>
                                 <div className="absolute flex flex-col top-4 right-4">
                                   <div className="flex items-center">
                                       </div>
-
-      
                                       </div>
                                   </div>
-                              <h3 className="mb-2 text-xl font-bold dark:text-white"> Quality Headphones </h3>
+                              <h3 className="mb-2 text-xl font-bold dark:text-white"> {fakeDataArray[idx].EventName} </h3>
                               <p className="text-lg font-bold text-blue-500 dark:text-blue-300 ">
-                                <span>$29.89</span>
-                                <span className="text-xs font-semibold text-gray-400 line-through ">$33.69</span>
+                                <span>${fakeDataArray[idx].Price}</span>
                               </p>
+                              <p className='text-sm color text-gray-400 mr-auto'>{fakeDataArray[idx].Date}</p>
                             </Link>
                           </div>
                         </div>
