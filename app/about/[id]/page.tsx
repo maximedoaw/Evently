@@ -7,28 +7,15 @@ import { StorageReference, getDownloadURL, listAll, ref } from 'firebase/storage
 import Image from 'next/image';
 import React from 'react'
 
-let list : any[] = []
-async function page({ params } : any) {
-  
 
-  const EventId = params.id
-  const imgEvent : StorageReference = await ref(storage,'images')
-  const imgList = await listAll(imgEvent)
-  const querySnapshot = await getDocs(collection(db,'event'))
-  
-  imgList.items.map((item) =>{
-    getDownloadURL(item).then((url) => list.push([url]))
-  })
+ function page({ params } : any) {
 
-
-
-  
-  
+  const EventId = params.id  
   return (
     <div className='w-1/2 h-full mx-auto my-auto'>
       <div className='flex my-5 lg:flex-row  sm:flex-col border'>
         <Image
-        src={(await get_event())[EventId]}
+        src={fakeDataArray[EventId].ImageUpload}
         alt=''
         placeholder='blur'
         blurDataURL='/assets/images/spinner.svg'

@@ -1,85 +1,55 @@
-
-import  React from 'react';
-import {  fields,fakeDataArray } from '@/app/helper/helper';
-import { db } from '@/app/firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import { Event } from '@/types';
-import { get_event } from '@/app/helper/action';
-import Image from "next/image"
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { fakeDataArray, fields } from '@/app/helper/helper';
 import AlertDialog from './Dialog';
 
-let doclist : any[] = []
-export default async function BasicTable() {
-   const props : any[] = await get_event()
- 
-//    const querySnapchot = await getDocs(collection(db,'events'))
-//     querySnapchot.forEach((doc) => {
-//      let data = doc.data() 
-    // console.log("Hentai" ,data)
-//      doclist.push(data)
-//    });
-//    console.log(doclist)
-  
 
-  
+
+export default function BasicTable() {
   return (
-    <div className="min-h-screen ">
-    <div className="p-8">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <table className="table-auto w-full">
-                  <thead className="bg-blue-500 text-white shadow-lg">
-                      <tr>
-                        {
-                            fields.map((field) =>{
-                                return(
-                                    <th className="py-3 px-4 text-left">{field}</th>                      
-                                )
-                            })
-                        }
-                      </tr>
-                  </thead>
-                  <tbody>
-                    
-                        {
-                            props.map((prop,idx) =>{
-                                return(
-                                <tr className="hover:bg-gray-100">
-                                    <td className="px-4 py-3 border">
-                                        {fakeDataArray[idx].Contact}
-                                    </td>
-                                    <td className="px-4 py-3 border">{fakeDataArray[idx].Date}</td>
-                                    <td className="px-4 py-3 border">{fakeDataArray[idx].Description}</td>
-                                    <td className="px-4 py-3 border">{fakeDataArray[idx].Email}</td>
-                                    <td className="px-4 py-3 border">{fakeDataArray[idx].Site}</td>
-                                    <td className="px-4 py-3 border">{fakeDataArray[idx].category}</td>
-                                    <td className="px-4 py-3 border">{fakeDataArray[idx].EventName}</td>
-                                    <td className="px-4 py-3 border">
-                                        <Image  
-                                        src={prop} 
-                                        alt="..."
-                                        width={250}
-                                        height={250}
-                                         />
-                                    </td>
-                                    <td className="px-4 py-3 border text-center">
-                                        <button 
-                                        className="hover:bg-gray-300 p-1 px-2 font-bold rounded-lg focus:outline-none"
-                                        >
-                                           &#8943;
-                                        </button>
-                                    </td>
-                                </tr>
-                                    )
-                                })
-                         }
-                         {
-                            
-                         }
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            {
+                fields.map((field ) =>{
+                    return <TableCell>{field}</TableCell>
+                })
+            }
+           
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {fakeDataArray.map((row,idx) => (
+            <TableRow
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.Contact}
+              </TableCell>
+              <TableCell align="right">{row.EventName}</TableCell>
+              <TableCell align="right">{row.Date}</TableCell>
+              <TableCell align="right">{row.Description}</TableCell>
+              <TableCell align="right">{row.Email}</TableCell>
+              <TableCell align="right">{row.Site}</TableCell>
+              <TableCell align="right">{row.category}</TableCell>
+              <TableCell align="right"><img src={row.ImageUpload} alt="" width={250} height={250} 
+              className='rounded-full'
+              /></TableCell>
+            <TableCell align="right"><AlertDialog text={"Edit"} index={idx} /></TableCell>
+            <TableCell align="right"><AlertDialog text={"Delete"} index={idx} /></TableCell>
 
-                  </tbody>
-              </table>
-            </div>
-        </div>
-    </div>
+
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }

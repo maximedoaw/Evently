@@ -1,8 +1,9 @@
-import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage"
+import { deleteObject, getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage"
 import { db, storage } from "../firebase"
 import { addDoc, collection, getDocs } from "firebase/firestore"
 import { v4 } from "uuid"
 import { useRouter } from "next/router"
+import { fakeDataArray } from "./helper"
 export default interface Event{
     Contact : number,
     Date : string,
@@ -33,7 +34,7 @@ export const add_event = async(event : Event)  =>{
                   category:event.category
                 })
                 alert('Event add with successfully !!!')
-                window.location.href = "/"
+               // window.location.href = "/"
               }).catch(() => {
                 alert('Error this image was not upload')
               })
@@ -49,7 +50,7 @@ export const get_event = async()  =>{
 
   const imageRef = ref(storage,"images")
   let  imagesList = await listAll(imageRef)
-  let  imagesURL = imagesList.items.map((item) => {
+  let  imagesURL =  await imagesList.items.map((item) => {
     getDownloadURL(item).then((url) => {
       listEvent.push(url)
     })
@@ -58,3 +59,7 @@ export const get_event = async()  =>{
   
   return listEvent
 }
+
+// export const delete_event = (idx : number)  =>{
+//  fakeDataArray[idx].state = true
+// }

@@ -149,4 +149,15 @@ export type CreateUserParams = {
     params: { id: string }
     searchParams: { [key: string]: string | string[] | undefined }
   }
-  
+  export type Action = {
+    index:number,
+    text: string
+  }
+export type CardType = {
+  index:number,
+  imgURL:string,
+  name:string,
+  price:number,
+  date:string
+
+}
