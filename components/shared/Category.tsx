@@ -1,11 +1,11 @@
 "use client"
-import { categories } from '@/app/helper/helper'
+import { categories, fakeDataArray } from '@/app/helper/helper'
 import Link from "next/link";
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 
 function Category() {
-  const searchParams = new URLSearchParams(window.location.search);
-  const paramValue = searchParams.get('category');
+  const url = useSearchParams() 
+  const paramValue : any = url.get("category")
 
   return (
     <div className='mx-auto text-center flex sm:grid-cols-3 '>
@@ -14,7 +14,7 @@ function Category() {
                 return (
                 <Link href={`/?category=${category}`}>
                     <button className={`border rounded-2xl w-40 h-10 hover:text-amber-600 hover:transition-300 mt-3
-                    ${paramValue == category ? 'bg-black text-white' : ""}`}>
+                    ${paramValue == category ? 'bg-gray-700 text-white' : ""}`}>
                       {category}
                     </button>
                 </Link>

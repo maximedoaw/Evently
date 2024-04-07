@@ -9,7 +9,7 @@ export const headerLinks = [
     },
     {
       label: 'Manage',
-      route: '/manage',
+      route: '/manage/?page=1',
     },
   ]
   

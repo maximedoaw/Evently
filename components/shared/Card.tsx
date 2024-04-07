@@ -7,7 +7,7 @@ import { fakeDataArray } from '../../app/helper/helper';
 import {  CardType } from '@/types';
 
 
-  async function Card({index,imgURL,name,price,date} :  CardType) {
+ function Card({index,imgURL,name,price,date} :  CardType) {
 
  
   return (
